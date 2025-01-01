@@ -2,7 +2,6 @@ from io import BufferedReader
 import os
 from dotenv import load_dotenv
 from tusclient import client
-from tusclient.uploader import Uploader
 from supabase import create_client
 
 load_dotenv()
@@ -14,6 +13,7 @@ supabase_key = os.environ.get("SUPABASE_KEY")
 def upload_file(
     bucket_name: str, file_name: str, file: BufferedReader, access_token: str
 ):
+    # create Tus client
     my_client = client.TusClient(
         f"{supabase_url}/storage/v1/upload/resumable",
         headers={"Authorization": f"Bearer {access_token}", "x-upsert": "true"},
@@ -41,7 +41,7 @@ def main() -> None:
     # get session
     session = supabase.auth.get_session()
 
-    # create Tus client
+    # open file and send file stream to upload
     with open("./assets/40mb.jpg", "rb") as fs:
         upload_file(
             bucket_name="assets",
