@@ -1,0 +1,16 @@
+{
+  "name": "tus-upload",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "author": "Andrew Smith<a.smith@silentworks.co.uk>",
+  "license": "MIT",
+  "devDependencies": {
+    "supabase": "^2.2.1"
+  },
+  "dependencies": {
+    "@dotenvx/dotenvx": "^1.32.0",
+    "@supabase/supabase-js": "^2.47.10",
+    "tus-js-client": "^4.2.3"
+  }
+}
